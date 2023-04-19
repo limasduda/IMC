@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imc.ico" type="image/x-icon"> 
+    <title>IMC</title>
+    <style>
+      body {
+        background-image: url(https://ichef.bbci.co.uk/news/640/cpsprodpb/15E02/production/_104620698_prmo_imc_br-nc.png);
+        background-size: cover;
+
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+    </style>
+</head>
+
+<body>
+
+    <h1>Calcule seu IMC:</h1>
+    <p>Nome:</p>
+    <input type="text" id="nome">
+    <p style="line-height: 2;"></p>
+    <p>Peso:</p>
+    <input type="number" id="peso"> 
+    <p style="line-height: 2;"></p>
+    <p>Altura:</p>
+    <input type="number" id="altura">
+    <p style="line-height: 2;"></p>
+
+    <button type="submit" onclick="calculaImc()"> Enviar </button>
+
+    <script>
+         function pulaLinha() {
+            document.write("<br><br>");
+        }
+
+        function mostra(frase) {
+            document.write(frase);
+            pulaLinha();
+        }
+
+        function calculaImc() {
+
+        var nome = document.getElementById("nome").value;
+        var peso = document.getElementById("peso").value;
+        var altura = document.getElementById("altura").value;
+
+        var imcCalculado = parseFloat(peso / (altura * altura));
+        var aguaCalculada = parseInt(peso * 35);
+
+        mostra(nome + ", o seu IMC é: " + imcCalculado.toFixed(2));
+        mostra("Você deve beber: " + aguaCalculada + "ml's de água por dia.");
+        
+        if (imcCalculado >= 18.5 && imcCalculado <= 24.9) {
+      mostra("O seu IMC está normal.");
+    }     else if (imcCalculado >= 25 && imcCalculado <= 29.9) {
+      mostra("O seu IMC aponta excesso de peso.");
+    }    else if (imcCalculado >= 30 && imcCalculado <= 34.99) {
+      mostra("Obesidade grau I.");
+    }    else if (imcCalculado >= 35 && imcCalculado <= 39.9) {
+      mostra("Obesidade grau II.");
+    }    else if (imcCalculado >= 40) {
+      mostra("Obesidade grau III.");
+    }
+  }
+
+    </script>
+</body>
+</html>
